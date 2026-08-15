@@ -2,6 +2,9 @@ import json
 import time
 from evaluator.metrics import calculate_accuracy
 from app.llm import classify_email
+from app.logger import get_logger
+
+logger = get_logger(__name__)
 
 DATASET_PATH = "dataset/golden_dataset.json"
 PROMPT_PATH = "app/prompts/classifier_v2.yaml"
@@ -11,8 +14,12 @@ def load_dataset(path):
     with open(path, "r", encoding="utf-8") as file:
 
         return json.load(file)
+
+
 def evaluate():
     dataset = load_dataset(DATASET_PATH)
+    logger.info("Starting evaluation")
+    logger.info(f"Loaded {len(dataset)} items from dataset")
     results = []
     for item in dataset:
         start_time = time.perf_counter()
@@ -36,6 +43,14 @@ def evaluate():
                  "latency_seconds": round(latency, 3)
             }
         )
+        logger.info(
+            "Case %s | Expected: %s | Predicted: %s | Correct: %s | Latency: %.3f seconds",
+            item["id"],
+            item["expected_category"],
+            prediction.category,
+            correct,
+            latency,
+        )
         print(
             f"[{item['id']}]"
             f"expected: {item['expected_category']} |"
@@ -43,6 +58,7 @@ def evaluate():
             f"correct: {'correct' if correct else 'incorrect'}"
             f"latency: {round(latency, 3)} seconds"
         )
+    logger.info("Evaluation completed")
     with open(REPORT_PATH, "w", encoding="utf-8") as file:
         json.dump(results, file, indent=4)
     return results

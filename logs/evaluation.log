@@ -1,0 +1,28 @@
+2026-08-15 12:11:38,110 - __main__ - INFO - Starting evaluation
+2026-08-15 12:11:38,111 - __main__ - INFO - Loaded 25 items from dataset
+2026-08-15 12:11:44,369 - __main__ - INFO - Case 1 | Expected: Billing | Predicted: Billing | Correct: True | Latency: 6.258 seconds
+2026-08-15 12:11:45,175 - __main__ - INFO - Case 2 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.806 seconds
+2026-08-15 12:11:45,999 - __main__ - INFO - Case 3 | Expected: General | Predicted: General | Correct: True | Latency: 0.823 seconds
+2026-08-15 12:11:46,813 - __main__ - INFO - Case 4 | Expected: General | Predicted: General | Correct: True | Latency: 0.805 seconds
+2026-08-15 12:11:47,596 - __main__ - INFO - Case 5 | Expected: Billing | Predicted: Account | Correct: False | Latency: 0.781 seconds
+2026-08-15 12:11:48,405 - __main__ - INFO - Case 6 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.808 seconds
+2026-08-15 12:11:49,216 - __main__ - INFO - Case 7 | Expected: General | Predicted: General | Correct: True | Latency: 0.811 seconds
+2026-08-15 12:11:50,011 - __main__ - INFO - Case 8 | Expected: Billing | Predicted: Account | Correct: False | Latency: 0.795 seconds
+2026-08-15 12:11:50,867 - __main__ - INFO - Case 9 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.855 seconds
+2026-08-15 12:11:51,805 - __main__ - INFO - Case 10 | Expected: General | Predicted: General | Correct: True | Latency: 0.938 seconds
+2026-08-15 12:11:52,642 - __main__ - INFO - Case 11 | Expected: General | Predicted: General | Correct: True | Latency: 0.837 seconds
+2026-08-15 12:11:53,430 - __main__ - INFO - Case 12 | Expected: General | Predicted: General | Correct: True | Latency: 0.787 seconds
+2026-08-15 12:11:54,203 - __main__ - INFO - Case 13 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.773 seconds
+2026-08-15 12:11:55,022 - __main__ - INFO - Case 14 | Expected: Billing | Predicted: Billing | Correct: True | Latency: 0.818 seconds
+2026-08-15 12:11:55,839 - __main__ - INFO - Case 15 | Expected: General | Predicted: General | Correct: True | Latency: 0.817 seconds
+2026-08-15 12:11:56,656 - __main__ - INFO - Case 16 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.816 seconds
+2026-08-15 12:11:57,514 - __main__ - INFO - Case 17 | Expected: General | Predicted: General | Correct: True | Latency: 0.857 seconds
+2026-08-15 12:11:58,289 - __main__ - INFO - Case 18 | Expected: Billing | Predicted: General | Correct: False | Latency: 0.775 seconds
+2026-08-15 12:11:59,061 - __main__ - INFO - Case 19 | Expected: General | Predicted: General | Correct: True | Latency: 0.772 seconds
+2026-08-15 12:11:59,869 - __main__ - INFO - Case 20 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.807 seconds
+2026-08-15 12:12:00,712 - __main__ - INFO - Case 21 | Expected: Account | Predicted: Technical | Correct: False | Latency: 0.843 seconds
+2026-08-15 12:12:01,476 - __main__ - INFO - Case 22 | Expected: Account | Predicted: Account | Correct: True | Latency: 0.763 seconds
+2026-08-15 12:12:02,219 - __main__ - INFO - Case 23 | Expected: Account | Predicted: Account | Correct: True | Latency: 0.742 seconds
+2026-08-15 12:12:02,995 - __main__ - INFO - Case 24 | Expected: Account | Predicted: Account | Correct: True | Latency: 0.776 seconds
+2026-08-15 12:12:03,777 - __main__ - INFO - Case 25 | Expected: Account | Predicted: Technical | Correct: False | Latency: 0.782 seconds
+2026-08-15 12:12:03,777 - __main__ - INFO - Evaluation completed

@@ -6,7 +6,7 @@
         "predicted": "Billing",
         "correct": true,
         "summary": "Refund request for unauthorized charge",
-        "latency_seconds": 7.147
+        "latency_seconds": 6.258
     },
     {
         "id": 2,
@@ -15,7 +15,7 @@
         "predicted": "Technical",
         "correct": true,
         "summary": "Login issues with password reset request",
-        "latency_seconds": 0.851
+        "latency_seconds": 0.806
     },
     {
         "id": 3,
@@ -24,7 +24,7 @@
         "predicted": "General",
         "correct": true,
         "summary": "Damaged product return request",
-        "latency_seconds": 0.842
+        "latency_seconds": 0.823
     },
     {
         "id": 4,
@@ -33,7 +33,7 @@
         "predicted": "General",
         "correct": true,
         "summary": "Product feature information request",
-        "latency_seconds": 0.822
+        "latency_seconds": 0.805
     },
     {
         "id": 5,
@@ -42,7 +42,7 @@
         "predicted": "Account",
         "correct": false,
         "summary": "Request to cancel subscription",
-        "latency_seconds": 0.821
+        "latency_seconds": 0.781
     },
     {
         "id": 6,
@@ -51,7 +51,7 @@
         "predicted": "Technical",
         "correct": true,
         "summary": "Troubleshooting software technical issues",
-        "latency_seconds": 0.877
+        "latency_seconds": 0.808
     },
     {
         "id": 7,
@@ -60,7 +60,7 @@
         "predicted": "General",
         "correct": true,
         "summary": "Improvement suggestion for the service",
-        "latency_seconds": 0.837
+        "latency_seconds": 0.811
     },
     {
         "id": 8,
@@ -69,7 +69,7 @@
         "predicted": "Account",
         "correct": false,
         "summary": "Update account details",
-        "latency_seconds": 0.801
+        "latency_seconds": 0.795
     },
     {
         "id": 9,
@@ -78,7 +78,7 @@
         "predicted": "Technical",
         "correct": true,
         "summary": "Troubleshooting website feature access",
-        "latency_seconds": 0.831
+        "latency_seconds": 0.855
     },
     {
         "id": 10,
@@ -87,7 +87,7 @@
         "predicted": "General",
         "correct": true,
         "summary": "Customer feedback on recent experience with customer service team",
-        "latency_seconds": 0.904
+        "latency_seconds": 0.938
     },
     {
         "id": 11,
@@ -96,7 +96,7 @@
         "predicted": "General",
         "correct": true,
         "summary": "Product pricing and plans information request",
-        "latency_seconds": 0.893
+        "latency_seconds": 0.837
     },
     {
         "id": 12,
@@ -105,7 +105,7 @@
         "predicted": "General",
         "correct": true,
         "summary": "Warranty information inquiry",
-        "latency_seconds": 0.828
+        "latency_seconds": 0.787
     },
     {
         "id": 13,
@@ -114,7 +114,7 @@
         "predicted": "Technical",
         "correct": true,
         "summary": "Installation issues with software",
-        "latency_seconds": 0.814
+        "latency_seconds": 0.773
     },
     {
         "id": 14,
@@ -123,7 +123,7 @@
         "predicted": "Billing",
         "correct": true,
         "summary": "Refund request for recent purchase",
-        "latency_seconds": 0.842
+        "latency_seconds": 0.818
     },
     {
         "id": 15,
@@ -132,7 +132,7 @@
         "predicted": "General",
         "correct": true,
         "summary": "Compatibility information requested",
-        "latency_seconds": 0.795
+        "latency_seconds": 0.817
     },
     {
         "id": 16,
@@ -141,7 +141,7 @@
         "predicted": "Technical",
         "correct": true,
         "summary": "Performance issues with software",
-        "latency_seconds": 0.814
+        "latency_seconds": 0.816
     },
     {
         "id": 17,
@@ -150,7 +150,7 @@
         "predicted": "General",
         "correct": true,
         "summary": "Product availability inquiry",
-        "latency_seconds": 0.884
+        "latency_seconds": 0.857
     },
     {
         "id": 18,
@@ -159,7 +159,7 @@
         "predicted": "General",
         "correct": false,
         "summary": "Payment process issue on website",
-        "latency_seconds": 0.827
+        "latency_seconds": 0.775
     },
     {
         "id": 19,
@@ -168,7 +168,7 @@
         "predicted": "General",
         "correct": true,
         "summary": "Product security features",
-        "latency_seconds": 0.803
+        "latency_seconds": 0.772
     },
     {
         "id": 20,
@@ -177,7 +177,7 @@
         "predicted": "Technical",
         "correct": true,
         "summary": "Troubleshooting software functionality issue",
-        "latency_seconds": 0.858
+        "latency_seconds": 0.807
     },
     {
         "id": 21,
@@ -186,7 +186,7 @@
         "predicted": "Technical",
         "correct": false,
         "summary": "Forgot password and unable to log in",
-        "latency_seconds": 0.876
+        "latency_seconds": 0.843
     },
     {
         "id": 22,
@@ -195,7 +195,7 @@
         "predicted": "Account",
         "correct": true,
         "summary": "Changing account email address",
-        "latency_seconds": 0.844
+        "latency_seconds": 0.763
     },
     {
         "id": 23,
@@ -204,7 +204,7 @@
         "predicted": "Account",
         "correct": true,
         "summary": "Account login issue",
-        "latency_seconds": 0.837
+        "latency_seconds": 0.742
     },
     {
         "id": 24,
@@ -213,7 +213,7 @@
         "predicted": "Account",
         "correct": true,
         "summary": "Request to delete account",
-        "latency_seconds": 0.786
+        "latency_seconds": 0.776
     },
     {
         "id": 25,
@@ -222,6 +222,6 @@
         "predicted": "Technical",
         "correct": false,
         "summary": "Login error with account",
-        "latency_seconds": 0.797
+        "latency_seconds": 0.782
     }
 ]

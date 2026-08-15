@@ -1,6 +1,9 @@
 import json
 import statistics
 
+from app.logger import get_logger
+
+logger = get_logger(__name__)
 V1_PATH = "reports/evaluation_v1.json"
 V2_PATH = "reports/evaluation_v2.json"
 ACCURACY_THRESHOLD = 0.05
@@ -31,7 +34,7 @@ def calculate_average_latency(results):
 def compare():
     v1 = load_report(V1_PATH)
     v2 = load_report(V2_PATH)
-
+    logger.info("Starting regression comparison")
     v1_accuracy = calculate_accuracy(v1)
     v2_accuracy = calculate_accuracy(v2)
 
@@ -49,11 +52,24 @@ def compare():
     print(f"V1 Accuracy: {v1_accuracy:.2%}")
     print(f"V2 Accuracy: {v2_accuracy:.2%}")
     print(f"Accuracy Change: {accuracy_change:+.2%}")
+    logger.info(
+        "V1 accuracy=%.2f%% | V2 accuracy=%.2f%% | change=%+.2f%%",
+        v1_accuracy * 100,
+        v2_accuracy * 100,
+        accuracy_change * 100
+    )
+
 
     print()
     print(f"V1 Avg Latency: {v1_latency:.3f}s")
     print(f"V2 Avg Latency: {v2_latency:.3f}s")
     print(f"Latency Change: {latency_change:+.3f}s")
+    logger.info(
+        "V1 latency=%.3fs | V2 latency=%.3fs | change=%+.3fs",
+        v1_latency,
+        v2_latency,
+        latency_change
+    )
 
     improved = []
     regressed = []
@@ -97,12 +113,15 @@ def compare():
 
     if accuracy_change < -ACCURACY_THRESHOLD:
         print("STATUS: REGRESSION")
+        logger.warning("Regressuon detected")
         return False
     elif accuracy_change > ACCURACY_THRESHOLD:
         print("STATUS: IMPROVEMENT")
+        logger.info("model improvement detected")
         return True
     else:
         print("STATUS: NO SIGNIFICANT CHANGE")
+        logger.info("No significant change detected")
         return True
 
 

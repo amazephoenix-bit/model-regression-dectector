@@ -26,3 +26,85 @@
 2026-08-15 12:12:02,995 - __main__ - INFO - Case 24 | Expected: Account | Predicted: Account | Correct: True | Latency: 0.776 seconds
 2026-08-15 12:12:03,777 - __main__ - INFO - Case 25 | Expected: Account | Predicted: Technical | Correct: False | Latency: 0.782 seconds
 2026-08-15 12:12:03,777 - __main__ - INFO - Evaluation completed
+2026-08-15 12:21:07,691 - __main__ - INFO - Starting evaluation
+2026-08-15 12:21:07,692 - __main__ - INFO - Loaded 25 items from dataset
+2026-08-15 12:21:07,692 - app.llm - INFO - Starting classification
+2026-08-15 12:21:13,737 - app.llm - INFO - Classification completed |category: Billing
+2026-08-15 12:21:13,737 - __main__ - INFO - Case 1 | Expected: Billing | Predicted: Billing | Correct: True | Latency: 6.045 seconds
+2026-08-15 12:21:13,737 - app.llm - INFO - Starting classification
+2026-08-15 12:21:14,563 - app.llm - INFO - Classification completed |category: Technical
+2026-08-15 12:21:14,563 - __main__ - INFO - Case 2 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.826 seconds
+2026-08-15 12:21:14,564 - app.llm - INFO - Starting classification
+2026-08-15 12:21:15,355 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:15,355 - __main__ - INFO - Case 3 | Expected: General | Predicted: General | Correct: True | Latency: 0.792 seconds
+2026-08-15 12:21:15,355 - app.llm - INFO - Starting classification
+2026-08-15 12:21:16,192 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:16,192 - __main__ - INFO - Case 4 | Expected: General | Predicted: General | Correct: True | Latency: 0.837 seconds
+2026-08-15 12:21:16,192 - app.llm - INFO - Starting classification
+2026-08-15 12:21:16,962 - app.llm - INFO - Classification completed |category: Account
+2026-08-15 12:21:16,962 - __main__ - INFO - Case 5 | Expected: Billing | Predicted: Account | Correct: False | Latency: 0.770 seconds
+2026-08-15 12:21:16,962 - app.llm - INFO - Starting classification
+2026-08-15 12:21:17,775 - app.llm - INFO - Classification completed |category: Technical
+2026-08-15 12:21:17,776 - __main__ - INFO - Case 6 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.813 seconds
+2026-08-15 12:21:17,776 - app.llm - INFO - Starting classification
+2026-08-15 12:21:18,591 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:18,591 - __main__ - INFO - Case 7 | Expected: General | Predicted: General | Correct: True | Latency: 0.815 seconds
+2026-08-15 12:21:18,591 - app.llm - INFO - Starting classification
+2026-08-15 12:21:19,330 - app.llm - INFO - Classification completed |category: Account
+2026-08-15 12:21:19,331 - __main__ - INFO - Case 8 | Expected: Billing | Predicted: Account | Correct: False | Latency: 0.739 seconds
+2026-08-15 12:21:19,331 - app.llm - INFO - Starting classification
+2026-08-15 12:21:20,160 - app.llm - INFO - Classification completed |category: Technical
+2026-08-15 12:21:20,160 - __main__ - INFO - Case 9 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.830 seconds
+2026-08-15 12:21:20,161 - app.llm - INFO - Starting classification
+2026-08-15 12:21:21,032 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:21,032 - __main__ - INFO - Case 10 | Expected: General | Predicted: General | Correct: True | Latency: 0.872 seconds
+2026-08-15 12:21:21,033 - app.llm - INFO - Starting classification
+2026-08-15 12:21:21,843 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:21,844 - __main__ - INFO - Case 11 | Expected: General | Predicted: General | Correct: True | Latency: 0.811 seconds
+2026-08-15 12:21:21,844 - app.llm - INFO - Starting classification
+2026-08-15 12:21:22,620 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:22,620 - __main__ - INFO - Case 12 | Expected: General | Predicted: General | Correct: True | Latency: 0.776 seconds
+2026-08-15 12:21:22,620 - app.llm - INFO - Starting classification
+2026-08-15 12:21:23,384 - app.llm - INFO - Classification completed |category: Technical
+2026-08-15 12:21:23,384 - __main__ - INFO - Case 13 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.764 seconds
+2026-08-15 12:21:23,384 - app.llm - INFO - Starting classification
+2026-08-15 12:21:24,197 - app.llm - INFO - Classification completed |category: Billing
+2026-08-15 12:21:24,198 - __main__ - INFO - Case 14 | Expected: Billing | Predicted: Billing | Correct: True | Latency: 0.813 seconds
+2026-08-15 12:21:24,198 - app.llm - INFO - Starting classification
+2026-08-15 12:21:24,961 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:24,961 - __main__ - INFO - Case 15 | Expected: General | Predicted: General | Correct: True | Latency: 0.763 seconds
+2026-08-15 12:21:24,961 - app.llm - INFO - Starting classification
+2026-08-15 12:21:25,737 - app.llm - INFO - Classification completed |category: Technical
+2026-08-15 12:21:25,737 - __main__ - INFO - Case 16 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.776 seconds
+2026-08-15 12:21:25,738 - app.llm - INFO - Starting classification
+2026-08-15 12:21:26,500 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:26,500 - __main__ - INFO - Case 17 | Expected: General | Predicted: General | Correct: True | Latency: 0.762 seconds
+2026-08-15 12:21:26,500 - app.llm - INFO - Starting classification
+2026-08-15 12:21:27,293 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:27,293 - __main__ - INFO - Case 18 | Expected: Billing | Predicted: General | Correct: False | Latency: 0.793 seconds
+2026-08-15 12:21:27,294 - app.llm - INFO - Starting classification
+2026-08-15 12:21:28,062 - app.llm - INFO - Classification completed |category: General
+2026-08-15 12:21:28,062 - __main__ - INFO - Case 19 | Expected: General | Predicted: General | Correct: True | Latency: 0.768 seconds
+2026-08-15 12:21:28,062 - app.llm - INFO - Starting classification
+2026-08-15 12:21:28,873 - app.llm - INFO - Classification completed |category: Technical
+2026-08-15 12:21:28,873 - __main__ - INFO - Case 20 | Expected: Technical | Predicted: Technical | Correct: True | Latency: 0.811 seconds
+2026-08-15 12:21:28,873 - app.llm - INFO - Starting classification
+2026-08-15 12:21:29,717 - app.llm - INFO - Classification completed |category: Technical
+2026-08-15 12:21:29,717 - __main__ - INFO - Case 21 | Expected: Account | Predicted: Technical | Correct: False | Latency: 0.844 seconds
+2026-08-15 12:21:29,718 - app.llm - INFO - Starting classification
+2026-08-15 12:21:30,498 - app.llm - INFO - Classification completed |category: Account
+2026-08-15 12:21:30,498 - __main__ - INFO - Case 22 | Expected: Account | Predicted: Account | Correct: True | Latency: 0.781 seconds
+2026-08-15 12:21:30,498 - app.llm - INFO - Starting classification
+2026-08-15 12:21:31,255 - app.llm - INFO - Classification completed |category: Account
+2026-08-15 12:21:31,256 - __main__ - INFO - Case 23 | Expected: Account | Predicted: Account | Correct: True | Latency: 0.757 seconds
+2026-08-15 12:21:31,256 - app.llm - INFO - Starting classification
+2026-08-15 12:21:32,026 - app.llm - INFO - Classification completed |category: Account
+2026-08-15 12:21:32,026 - __main__ - INFO - Case 24 | Expected: Account | Predicted: Account | Correct: True | Latency: 0.771 seconds
+2026-08-15 12:21:32,027 - app.llm - INFO - Starting classification
+2026-08-15 12:21:32,792 - app.llm - INFO - Classification completed |category: Technical
+2026-08-15 12:21:32,792 - __main__ - INFO - Case 25 | Expected: Account | Predicted: Technical | Correct: False | Latency: 0.765 seconds
+2026-08-15 12:21:32,792 - __main__ - INFO - Evaluation completed
+2026-08-15 12:33:40,662 - __main__ - INFO - Starting regression comparison
+2026-08-15 12:33:40,663 - __main__ - INFO - V1 accuracy=64.00% | V2 accuracy=80.00% | change=+16.00%
+2026-08-15 12:33:40,663 - __main__ - INFO - V1 latency=1.249s | V2 latency=1.004s | change=-0.246s
+2026-08-15 12:33:40,664 - __main__ - INFO - model improvement detected

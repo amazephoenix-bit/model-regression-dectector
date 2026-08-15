@@ -1,0 +1,227 @@
+[
+    {
+        "id": 1,
+        "email": "I was charged $50 for a service I did not receive. I would like a refund.",
+        "expected": "Billing",
+        "predicted": "Billing",
+        "correct": true,
+        "summary": "Refund request for unauthorized charge",
+        "latency_seconds": 3.447
+    },
+    {
+        "id": 2,
+        "email": "I am having trouble logging into my account. Can you help me reset my password?",
+        "expected": "Technical",
+        "predicted": "Technical",
+        "correct": true,
+        "summary": "Password reset request",
+        "latency_seconds": 0.825
+    },
+    {
+        "id": 3,
+        "email": "I received a damaged product. I would like to return it and get a replacement.",
+        "expected": "General",
+        "predicted": "General",
+        "correct": true,
+        "summary": "Damaged product return request",
+        "latency_seconds": 0.828
+    },
+    {
+        "id": 4,
+        "email": "I have a question about the features of your product. Can you provide more information?",
+        "expected": "General",
+        "predicted": "General",
+        "correct": true,
+        "summary": "Product feature information request",
+        "latency_seconds": 0.831
+    },
+    {
+        "id": 5,
+        "email": "I would like to cancel my subscription. Can you assist me with that?",
+        "expected": "Billing",
+        "predicted": "Account",
+        "correct": false,
+        "summary": "Request to cancel subscription",
+        "latency_seconds": 0.758
+    },
+    {
+        "id": 6,
+        "email": "I am experiencing technical issues with your software. Can you help me troubleshoot?",
+        "expected": "Technical",
+        "predicted": "Technical",
+        "correct": true,
+        "summary": "Troubleshooting technical issues with software",
+        "latency_seconds": 0.752
+    },
+    {
+        "id": 7,
+        "email": "I have a suggestion for improving your service. Who can I contact?",
+        "expected": "General",
+        "predicted": "General",
+        "correct": true,
+        "summary": "Improvement suggestion for the service",
+        "latency_seconds": 0.732
+    },
+    {
+        "id": 8,
+        "email": "I need to update my billing information. How can I do that?",
+        "expected": "Billing",
+        "predicted": "Account",
+        "correct": false,
+        "summary": "Request to update account information",
+        "latency_seconds": 0.707
+    },
+    {
+        "id": 9,
+        "email": "I am having trouble accessing certain features of your website. Can you assist me?",
+        "expected": "Technical",
+        "predicted": "Technical",
+        "correct": true,
+        "summary": "Troubleshooting website feature access",
+        "latency_seconds": 0.724
+    },
+    {
+        "id": 10,
+        "email": "I would like to provide feedback on my recent experience with your customer service team.",
+        "expected": "General",
+        "predicted": "General",
+        "correct": true,
+        "summary": "Customer feedback on recent experience with customer service team",
+        "latency_seconds": 0.785
+    },
+    {
+        "id": 11,
+        "email": "I am interested in learning more about your product pricing and plans. Can you provide details?",
+        "expected": "General",
+        "predicted": "General",
+        "correct": true,
+        "summary": "Product pricing and plans information",
+        "latency_seconds": 0.709
+    },
+    {
+        "id": 12,
+        "email": "I have a question about the warranty for your product. Can you provide information?",
+        "expected": "General",
+        "predicted": "General",
+        "correct": true,
+        "summary": "Warranty information inquiry",
+        "latency_seconds": 0.702
+    },
+    {
+        "id": 13,
+        "email": "I am having trouble with the installation process of your software. Can you assist me?",
+        "expected": "Technical",
+        "predicted": "Technical",
+        "correct": true,
+        "summary": "Installation issues with software",
+        "latency_seconds": 0.685
+    },
+    {
+        "id": 14,
+        "email": "I would like to request a refund for a recent purchase. Can you help me with that?",
+        "expected": "Billing",
+        "predicted": "Billing",
+        "correct": true,
+        "summary": "Refund request for recent purchase",
+        "latency_seconds": 0.737
+    },
+    {
+        "id": 15,
+        "email": "I have a question about the compatibility of your product with my device. Can you provide information?",
+        "expected": "General",
+        "predicted": "General",
+        "correct": true,
+        "summary": "Compatibility information requested",
+        "latency_seconds": 0.702
+    },
+    {
+        "id": 16,
+        "email": "I am experiencing issues with the performance of your software. Can you assist me?",
+        "expected": "Technical",
+        "predicted": "Technical",
+        "correct": true,
+        "summary": "Performance issues with software",
+        "latency_seconds": 0.706
+    },
+    {
+        "id": 17,
+        "email": "I would like to inquire about the availability of your product in my region. Can you provide information?",
+        "expected": "General",
+        "predicted": "General",
+        "correct": true,
+        "summary": "Product availability inquiry",
+        "latency_seconds": 0.669
+    },
+    {
+        "id": 18,
+        "email": "I am having trouble with the payment process on your website. Can you assist me?",
+        "expected": "Billing",
+        "predicted": "General",
+        "correct": false,
+        "summary": "Payment process issue on website",
+        "latency_seconds": 0.701
+    },
+    {
+        "id": 19,
+        "email": "I have a question about the security features of your product. Can you provide information?",
+        "expected": "General",
+        "predicted": "General",
+        "correct": true,
+        "summary": "Product security features",
+        "latency_seconds": 0.693
+    },
+    {
+        "id": 20,
+        "email": "I am experiencing issues with the functionality of your software. Can you help me troubleshoot?",
+        "expected": "Technical",
+        "predicted": "Technical",
+        "correct": true,
+        "summary": "Troubleshooting software functionality issue",
+        "latency_seconds": 0.727
+    },
+    {
+        "id": 21,
+        "email": "I forgot my password and cannot log in to my account. Can you help me reset it?",
+        "expected": "Account",
+        "predicted": "Technical",
+        "correct": false,
+        "summary": "Forgot password and unable to log in",
+        "latency_seconds": 0.761
+    },
+    {
+        "id": 22,
+        "email": "I want to change  the email address associated with my account. How can I do that?",
+        "expected": "Account",
+        "predicted": "Account",
+        "correct": true,
+        "summary": "Changing account details",
+        "latency_seconds": 0.669
+    },
+    {
+        "id": 23,
+        "email": "I am having trouble accessing my account. Can you help me recover it?",
+        "expected": "Account",
+        "predicted": "Account",
+        "correct": true,
+        "summary": "Account login issue",
+        "latency_seconds": 0.658
+    },
+    {
+        "id": 24,
+        "email": "I want to delete my account. Can you assist me with that?",
+        "expected": "Account",
+        "predicted": "Account",
+        "correct": true,
+        "summary": "Request to delete account",
+        "latency_seconds": 0.685
+    },
+    {
+        "id": 25,
+        "email": "I am receiving error messages when trying to log in to my account. Can you help me resolve this?",
+        "expected": "Account",
+        "predicted": "Technical",
+        "correct": false,
+        "summary": "Login error with account",
+        "latency_seconds": 0.714
+    }
+]

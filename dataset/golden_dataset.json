@@ -1,0 +1,129 @@
+[
+    {
+        "id": 1,
+        "email": "I was charged $50 for a service I did not receive. I would like a refund.",
+        "expected_category": "Billing"
+    },
+    {
+        "id": 2,
+        "email": "I am having trouble logging into my account. Can you help me reset my password?",
+        "expected_category": "Technical"
+    },
+    {
+        "id": 3,
+        "email": "I received a damaged product. I would like to return it and get a replacement.",
+        "expected_category": "General"
+    },
+    {
+        "id": 4,
+        "email": "I have a question about the features of your product. Can you provide more information?",
+        "expected_category": "General"
+    },
+    {
+        "id": 5,
+        "email": "I would like to cancel my subscription. Can you assist me with that?",
+        "expected_category": "Billing"
+    },
+    {
+        "id": 6,
+        "email": "I am experiencing technical issues with your software. Can you help me troubleshoot?",
+        "expected_category": "Technical"
+    },
+    {
+        "id": 7,
+        "email": "I have a suggestion for improving your service. Who can I contact?",
+        "expected_category": "General"
+    },
+    {
+        "id": 8,
+        "email": "I need to update my billing information. How can I do that?",
+        "expected_category": "Billing"
+    },
+    {
+        "id": 9,
+        "email": "I am having trouble accessing certain features of your website. Can you assist me?",
+        "expected_category": "Technical"
+    },
+    {
+        "id": 10,
+        "email": "I would like to provide feedback on my recent experience with your customer service team.",
+        "expected_category": "General" 
+    },
+    {   
+        "id": 11,
+        "email": "I am interested in learning more about your product pricing and plans. Can you provide details?",
+        "expected_category": "General" 
+
+    },
+    {
+        "id": 12,
+        "email": "I have a question about the warranty for your product. Can you provide information?",
+        "expected_category": "General"
+    },
+    {
+        "id": 13,
+        "email": "I am having trouble with the installation process of your software. Can you assist me?",
+        "expected_category": "Technical"
+    },
+    {
+        "id": 14,
+        "email": "I would like to request a refund for a recent purchase. Can you help me with that?",
+        "expected_category": "Billing"
+    },
+    {
+        "id": 15,
+        "email": "I have a question about the compatibility of your product with my device. Can you provide information?",
+        "expected_category": "General"
+    },
+    {
+        "id": 16,
+        "email": "I am experiencing issues with the performance of your software. Can you assist me?",
+        "expected_category": "Technical"
+    },
+    {
+        "id": 17,
+        "email": "I would like to inquire about the availability of your product in my region. Can you provide information?",
+        "expected_category": "General"
+    },
+    {
+        "id": 18,
+        "email": "I am having trouble with the payment process on your website. Can you assist me?",
+        "expected_category": "Billing"
+    },
+    {
+        "id": 19,
+        "email": "I have a question about the security features of your product. Can you provide information?",
+        "expected_category": "General"
+    },
+    {
+        "id": 20,
+        "email": "I am experiencing issues with the functionality of your software. Can you help me troubleshoot?",
+        "expected_category": "Technical"
+    },
+    {
+        "id": 21,
+        "email":"I forgot my password and cannot log in to my account. Can you help me reset it?",
+        "expected_category": "Account"
+    },
+    {
+        "id": 22,
+        "email": "I want to change  the email address associated with my account. How can I do that?",
+        "expected_category": "Account"
+    },
+    {
+        "id": 23,
+        "email": "I am having trouble accessing my account. Can you help me recover it?",
+        "expected_category": "Account"
+    },
+    {
+        "id": 24,
+        "email": "I want to delete my account. Can you assist me with that?",
+        "expected_category": "Account"
+    },
+    {
+        "id": 25,
+        "email": "I am receiving error messages when trying to log in to my account. Can you help me resolve this?",
+        "expected_category": "Account"
+    }
+
+]

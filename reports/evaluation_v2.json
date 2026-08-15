@@ -4,7 +4,7 @@
         "email": "I was charged $50 for a service I did not receive. I would like a refund.",
         "expected": "Billing",
         "predicted": "Billing",
-        "correct": false,
+        "correct": true,
         "summary": "Refund request for unauthorized charge",
         "latency_seconds": 7.147
     },
@@ -13,7 +13,7 @@
         "email": "I am having trouble logging into my account. Can you help me reset my password?",
         "expected": "Technical",
         "predicted": "Technical",
-        "correct": false,
+        "correct": true,
         "summary": "Login issues with password reset request",
         "latency_seconds": 0.851
     },
@@ -76,7 +76,7 @@
         "email": "I am having trouble accessing certain features of your website. Can you assist me?",
         "expected": "Technical",
         "predicted": "Technical",
-        "correct": false,
+        "correct": true,
         "summary": "Troubleshooting website feature access",
         "latency_seconds": 0.831
     },
@@ -85,7 +85,7 @@
         "email": "I would like to provide feedback on my recent experience with your customer service team.",
         "expected": "General",
         "predicted": "General",
-        "correct": false,
+        "correct": true,
         "summary": "Customer feedback on recent experience with customer service team",
         "latency_seconds": 0.904
     },
@@ -121,7 +121,7 @@
         "email": "I would like to request a refund for a recent purchase. Can you help me with that?",
         "expected": "Billing",
         "predicted": "Billing",
-        "correct": false,
+        "correct": true,
         "summary": "Refund request for recent purchase",
         "latency_seconds": 0.842
     },
@@ -130,7 +130,7 @@
         "email": "I have a question about the compatibility of your product with my device. Can you provide information?",
         "expected": "General",
         "predicted": "General",
-        "correct": false,
+        "correct": true,
         "summary": "Compatibility information requested",
         "latency_seconds": 0.795
     },
@@ -213,7 +213,7 @@
         "predicted": "Account",
         "correct": true,
         "summary": "Request to delete account",
-        "latency_seconds": 0.896
+        "latency_seconds": 0.786
     },
     {
         "id": 25,
@@ -222,6 +222,6 @@
         "predicted": "Technical",
         "correct": false,
         "summary": "Login error with account",
-        "latency_seconds": 0.813
+        "latency_seconds": 0.797
     }
 ]

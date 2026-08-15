@@ -25,6 +25,13 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Set up Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          ollama serve > /tmp/ollama.log 2>&1 &
+          sleep 5
+          ollama pull llama3.2
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt

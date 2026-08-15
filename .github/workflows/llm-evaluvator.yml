@@ -12,6 +12,10 @@ jobs:
   evaluate:
     runs-on: ubuntu-latest
 
+    env:
+      OLLAMA_MODEL: llama3.2
+      OLLAMA_HOST: http://127.0.0.1:11434
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

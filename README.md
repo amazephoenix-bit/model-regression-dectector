@@ -1,723 +1,158 @@
 # LLM Model Regression Detector
 
-> An automated evaluation and regression-testing framework for LLM-based applications.
+A local LLM evaluation and regression-testing framework that automatically detects whether a new prompt version or model upgrade improves or degrades performance — before it ships.
 
-This project detects whether a new LLM prompt/model version improves or degrades application performance.
-
-Instead of relying on manual inspection, the system evaluates both model versions against the same golden dataset, compares accuracy and latency, identifies individual regressions, and automatically fails CI when performance drops beyond a configurable threshold.
-
-The current experiment improved classification accuracy from **64% to 80% (+16 percentage points)**.
+Built around **Llama 3.2** running locally through **Ollama**, evaluated against a golden dataset for a customer-support email classification task. CI-gated: if a change regresses accuracy beyond a configurable threshold, the pipeline fails automatically.
 
 ---
 
-## Why This Project?
+## Why this exists
 
-LLM applications are difficult to test using traditional software-testing approaches.
+Prompt tweaks and model version bumps are easy to make and hard to trust. Without a regression harness, teams either eyeball a handful of outputs or ship blind. This project runs a full before/after comparison on every change, scores it against a golden dataset, and blocks the merge if quality drops — the same discipline unit tests bring to code, applied to LLM behavior.
 
-A small change to:
+---
 
-- a system prompt
-- model version
-- inference parameters
-- application code
-- output schema
+## Features
 
-can silently change model behavior.
+- 🖥️ **Local inference** via Ollama — no API costs, no external calls
+- 📐 **Structured JSON output** validated with Pydantic
+- 📊 **Golden evaluation dataset** for consistent, repeatable scoring
+- 📈 **Accuracy, latency, and category-level metrics**
+- 🔁 **V1 vs V2 comparison** with per-case regression detection
+- ⚙️ **Configurable regression threshold**
+- ✅ **Python unit tests** for the evaluation pipeline itself
+- 📝 **Centralized logging** for every run
+- 🤖 **GitHub Actions CI** — auto-fails the build on detected regression
+- 🦭 **Podman support** for reproducible, rootless containerized runs
 
-For example:
+---
 
-```text
-V1 → 64% accuracy
-V2 → 80% accuracy
+## Architecture
+
 ```
-
-An improvement is good.
-
-But a change such as:
-
-```text
-V1 → 80%
-V2 → 72%
-```
-
-should not be allowed into production automatically.
-
-This project treats LLM behavior as a testable software component.
-
----
-
-# Features
-
-- Local LLM inference using Ollama
-- Llama 3.2 model support
-- Golden evaluation dataset
-- Versioned model/prompt evaluation
-- Structured LLM output validation
-- Accuracy measurement
-- Average latency measurement
-- Category-level performance metrics
-- Improved-case detection
-- Regressed-case detection
-- Configurable regression threshold
-- Automated regression gate
-- Non-zero exit code on regression
-- Unit tests with pytest
-- Centralized application logging
-- Evaluation reports stored as JSON
-- GitHub Actions CI
-- GitHub Actions job summaries
-- Podman containerization
-
----
-
-# Architecture
-
-```text
-                         ┌─────────────────────┐
-                         │   Golden Dataset    │
-                         │                     │
-                         │ Expected categories │
-                         │ + test emails       │
-                         └──────────┬──────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │     LLM Runner      │
-                         │                     │
-                         │     Llama 3.2       │
-                         │       Ollama        │
-                         └──────────┬──────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │     Evaluation      │
-                         │                     │
-                         │ Accuracy            │
-                         │ Latency             │
-                         │ Correctness         │
-                         └──────────┬──────────┘
-                                    │
-                         ┌──────────┴──────────┐
-                         ▼                     ▼
-                  evaluation_v1.json    evaluation_v2.json
-                         │                     │
-                         └──────────┬──────────┘
-                                    ▼
-                         ┌─────────────────────┐
-                         │ Regression Detector │
-                         │                     │
-                         │ V1 vs V2            │
-                         │ Accuracy change     │
-                         │ Latency change      │
-                         │ Category metrics    │
-                         │ Case-level changes  │
-                         └──────────┬──────────┘
-                                    │
-                         ┌──────────┴──────────┐
-                         ▼                     ▼
-                    IMPROVEMENT            REGRESSION
-                         │                     │
-                         ▼                     ▼
-                       PASS                   FAIL
-                                             exit 1
-                         │
-                         ▼
-                  GitHub Actions CI
+Golden Dataset
+      │
+      ▼
+   Llama 3.2 (via Ollama)
+      │
+      ▼
+   Evaluator
+      │
+      ├──► Accuracy
+      ├──► Latency
+      └──► Category Metrics
+      │
+      ▼
+  V1 / V2 Reports
+      │
+      ▼
+Regression Detector
+      │
+      ├──► Improved Cases
+      └──► Regressed Cases
+      │
+      ▼
+  GitHub Actions
+      │
+      ├──► ✅ PASS
+      └──► ❌ FAIL
 ```
 
 ---
 
-# Current Results
+## Quick Start
 
-The first prompt/model experiment produced the following result:
+### Prerequisites
+- Python 3.10+
+- [Ollama](https://ollama.com) installed and running locally
+- [Podman](https://podman.io) (optional, for containerized runs)
 
-| Metric            |  V1 |  V2 |                     Change |
-| ----------------- | --: | --: | --------------------------: |
-| Accuracy          | 64% | 80% | **+16 percentage points**  |
-| Regression status |   — |   — |            **IMPROVEMENT** |
-
-The regression detector also checks individual examples and separates them into:
-
-```text
-IMPROVED CASES
-REGRESSED CASES
-```
-
-In the tested V2 experiment, no regressions were detected.
-
-> Results are based on the current golden dataset and should be treated as an experiment rather than a universal benchmark.
-
----
-
-# Regression Detection
-
-The system uses a configurable accuracy threshold:
-
-```python
-ACCURACY_THRESHOLD = 0.05
-```
-
-This means:
-
-```text
-Accuracy decrease > 5%
-        ↓
-REGRESSION
-        ↓
-exit code 1
-        ↓
-GitHub Actions fails
-```
-
-While:
-
-```text
-Accuracy increase > 5%
-        ↓
-IMPROVEMENT
-        ↓
-PASS
-```
-
-And:
-
-```text
-Change within ±5%
-        ↓
-NO SIGNIFICANT CHANGE
-        ↓
-PASS
-```
-
-This allows model changes to be treated as CI-testable artifacts.
-
----
-
-# Category-Level Evaluation
-
-The evaluator also measures performance by expected category.
-
-Supported categories:
-
-```text
-Billing
-Technical
-Account
-General
-```
-
-Example output:
-
-```text
-CATEGORY PERFORMANCE
---------------------
-Billing: 4/5 (80.00%)
-Technical: 5/6 (83.33%)
-Account: 4/5 (80.00%)
-General: 7/9 (77.78%)
-```
-
-This makes it possible to identify problems hidden by overall accuracy.
-
-For example:
-
-```text
-Overall accuracy: 80%
-
-Billing:     95%
-Technical:   92%
-Account:     61%
-General:     82%
-```
-
-The overall number looks acceptable, but the category-level results reveal a weakness in Account classification.
-
----
-
-# Case-Level Regression Detection
-
-The comparison engine checks every corresponding example between V1 and V2.
-
-### Improved
-
-```text
-V1: incorrect
-V2: correct
-```
-
-→ classified as an **improved case**.
-
-### Regressed
-
-```text
-V1: correct
-V2: incorrect
-```
-
-→ classified as a **regressed case**.
-
-Example:
-
-```text
-IMPROVED CASES
---------------
-ID 2: Technical → Technical
-ID 9: Technical → Technical
-
-REGRESSED CASES
----------------
-None
-```
-
-This makes the evaluation more actionable than simply reporting an accuracy number.
-
----
-
-# Testing
-
-The project contains unit tests for the major components.
-
-```text
-tests/
-├── test_runner.py
-├── test_compare.py
-└── test_llm.py
-```
-
-Run:
+### Setup
 
 ```bash
-pytest
-```
-
-Current test suite:
-
-```text
-10 passed
-```
-
-The tests cover:
-
-- evaluation logic
-- accuracy calculation
-- latency calculation
-- comparison logic
-- LLM classification behavior
-- runner behavior
-
----
-
-# Logging
-
-The project uses centralized logging instead of relying only on `print()` statements.
-
-Important events include:
-
-```text
-Starting regression comparison
-Loaded evaluation reports
-Accuracy comparison
-Latency comparison
-Case-level changes
-Regression detection
-Model improvement detection
-```
-
-Logs are stored under:
-
-```text
-logs/
-```
-
-This provides visibility into what happened during an evaluation run.
-
----
-
-# GitHub Actions
-
-The project automatically runs evaluation through GitHub Actions.
-
-The CI pipeline:
-
-```text
-Push / Pull Request
-        ↓
-Checkout repository
-        ↓
-Set up Python
-        ↓
-Install dependencies
-        ↓
-Run evaluation
-        ↓
-Compare V1 and V2
-        ↓
-Regression gate
-        ↓
-PASS / FAIL
-```
-
-A regression causes:
-
-```text
-exit code 1
-```
-
-which causes the GitHub Actions workflow to fail.
-
-This prevents an LLM change that significantly reduces evaluation performance from silently passing CI.
-
-The workflow also generates a GitHub Actions summary containing:
-
-- V1 accuracy
-- V2 accuracy
-- accuracy change
-- average latency
-- category performance
-- improved cases
-- regressed cases
-
----
-
-# Containerization
-
-The project is containerized using Podman and an OCI-compatible container image.
-
-Build the image:
-
-```bash
-podman build -t llm-regression-detector .
-```
-
-Run the regression detector:
-
-```bash
-podman run --rm llm-regression-detector
-```
-
-The container executes:
-
-```bash
-python -m evaluator.compare
-```
-
-A successful evaluation produces:
-
-```text
-STATUS: IMPROVEMENT
-```
-
-while a significant regression causes:
-
-```text
-STATUS: REGRESSION
-```
-
-and exits with code `1`.
-
-This allows the same regression gate to be executed locally inside a reproducible container environment.
-
----
-
-# Project Structure
-
-```text
-model-regression-detector/
-│
-├── .github/
-│   └── workflows/
-│       └── regression.yml
-│
-├── app/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── llm.py
-│   ├── logger.py
-│   └── schemas.py
-│
-├── dataset/
-│   └── golden_dataset.json
-│
-├── evaluator/
-│   ├── __init__.py
-│   ├── runner.py
-│   ├── compare.py
-│   └── metrics.py
-│
-├── reports/
-│   ├── evaluation_v1.json
-│   └── evaluation_v2.json
-│
-├── tests/
-│   ├── test_runner.py
-│   ├── test_compare.py
-│   └── test_llm.py
-│
-├── logs/
-│   └── evaluation.log
-│
-├── .dockerignore
-├── .env
-├── .gitignore
-├── Dockerfile
-├── main.py
-├── requirements.txt
-└── README.md
-```
-
----
-
-# Local Setup
-
-## 1. Clone the repository
-
-```bash
-git clone <your-repository-url>
+git clone https://github.com/amazephoenix-bit/model-regression-detector.git
 cd model-regression-detector
-```
 
-## 2. Create a virtual environment
-
-Windows:
-
-```powershell
-python -m venv .venv
-```
-
-Activate:
-
-```powershell
-.venv\Scripts\activate
-```
-
-## 3. Install dependencies
-
-```powershell
 pip install -r requirements.txt
-```
 
-## 4. Configure Ollama
-
-Install Ollama and make sure the required model is available:
-
-```bash
+# Pull the model used for evaluation
 ollama pull llama3.2
 ```
 
-The application expects the Ollama service to be available locally.
-
----
-
-# Environment Configuration
-
-Create a `.env` file:
-
-```env
-OLLAMA_MODEL=llama3.2
-OLLAMA_HOST=http://127.0.0.1:11434
-```
-
-Do not commit `.env` to Git.
-
-It should be included in `.gitignore` and `.dockerignore`.
-
----
-
-# Running the Evaluator
-
-Run the evaluation:
+### Run an evaluation
 
 ```bash
-python -m evaluator.runner
+python main.py
 ```
 
-This generates evaluation results under:
-
-```text
-reports/
-```
-
-Then compare V1 and V2:
+### Run tests
 
 ```bash
-python -m evaluator.compare
+pytest test_runner.py test_compare.py test_llm.py
 ```
 
-Example:
+### Run in a container
 
-```text
-================================
-       MODEL REGRESSION TEST
-================================
-
-V1 Accuracy: 64.00%
-V2 Accuracy: 80.00%
-Accuracy Change: +16.00%
-
-V1 Avg Latency: 0.829s
-V2 Avg Latency: 0.836s
-Latency Change: +0.007s
-
-CATEGORY PERFORMANCE
---------------------
-
-...
-
-IMPROVED CASES
---------------
-
-...
-
-REGRESSED CASES
----------------
-
-None
-
-STATUS: IMPROVEMENT
+```bash
+podman build -t model-regression-detector .
+podman run --rm model-regression-detector
 ```
 
 ---
 
-# Development Workflow
+## Sample Output
 
-A typical model/prompt change follows this process:
+```
+Comparing V1 vs V2 on golden dataset (n=120)
 
-```text
-1. Modify prompt/model
-        ↓
-2. Run evaluation
-        ↓
-3. Generate V2 report
-        ↓
-4. Compare V1 vs V2
-        ↓
-5. Inspect category metrics
-        ↓
-6. Inspect improved/regressed cases
-        ↓
-7. Run unit tests
-        ↓
-8. Commit changes
-        ↓
-9. Push to GitHub
-        ↓
-10. GitHub Actions validates the change
+Accuracy:   V1: 91.7%   →   V2: 88.3%   (-3.4%)
+Latency:    V1: 412ms   →   V2: 398ms   (-14ms)
+
+Category breakdown:
+  billing        94% → 90%  ⚠ regressed
+  shipping       89% → 91%  ✅ improved
+  account        93% → 84%  ⚠ regressed
+
+Regression threshold: 2.0%
+Result: ❌ FAIL — 2 categories exceeded regression threshold
 ```
 
-This creates a repeatable evaluation workflow for LLM changes.
+*(Sample for illustration — replace with a real run's output.)*
 
 ---
 
-# Design Principles
+## Project Structure
 
-### Reproducibility
-
-Both versions are evaluated against the same golden dataset.
-
-### Separation of concerns
-
-The project separates:
-
-- LLM inference
-- evaluation
-- metric calculation
-- comparison
-- testing
-- CI
-- logging
-
-### Automated quality gates
-
-LLM changes should not rely solely on manual inspection.
-
-### Explainability
-
-The system reports not only whether performance changed, but also:
-
-- how much accuracy changed
-- how latency changed
-- which categories changed
-- which individual examples improved
-- which examples regressed
-
----
-
-# Limitations
-
-This project currently uses a relatively small golden dataset.
-
-Therefore:
-
-- accuracy can have high variance
-- results may not generalize to real production traffic
-- category-level metrics can be sensitive to sample size
-- latency depends on the local hardware and Ollama configuration
-
-A larger and more diverse evaluation dataset would make the benchmark more reliable.
-
----
-
-# Future Improvements
-
-Potential extensions include:
-
-- Larger evaluation datasets
-- Confusion matrix generation
-- Precision / recall / F1 by category
-- Experiment history tracking
-- Prompt version tracking
-- Model version tracking
-- Automatic report generation
-- Persistent evaluation database
-- Podman Compose for Ollama + evaluator
-- CI artifact storage
-- Evaluation dashboards
-- Statistical significance testing
-- Multi-model benchmarking
-- LLM-as-a-judge evaluation for tasks where exact labels are insufficient
-
----
-
-# Tech Stack
-
-| Component        | Technology     |
-| ----------------- | -------------- |
-| Language          | Python         |
-| LLM               | Llama 3.2      |
-| LLM Runtime       | Ollama         |
-| Validation        | Pydantic       |
-| Testing           | Pytest         |
-| CI/CD             | GitHub Actions |
-| Logging           | Python logging |
-| Containerization  | Podman         |
-| Data Format       | JSON           |
-| Environment       | `.env`         |
-
----
-
-# Key Result
-
-The initial prompt revision demonstrated a measurable improvement:
-
-```text
-V1 Accuracy
-64%
-   ↓
-V2 Accuracy
-80%
-
-Improvement
-+16 percentage points
+```
+.
+├── app/            # Core application logic
+├── dataset/         # Golden evaluation dataset
+├── evaluator/        # Scoring, metrics, comparison logic
+├── logs/            # Run logs
+├── reports/          # Generated V1/V2 comparison reports
+├── test_runner.py    # Evaluation run tests
+├── test_compare.py   # Regression comparison tests
+├── test_llm.py       # LLM interface tests
+├── Dockerfile
+└── main.py           # Entry point
 ```
 
-The important part is not simply that V2 performed better.
+---
 
-The system was able to **measure the change, identify individual case-level differences, validate the implementation with automated tests, and enforce the result through CI.**
+## Configuration
+
+The regression threshold and dataset paths can be adjusted in the evaluator config — update this section with the actual file/flag once finalized (e.g. `evaluator/config.py` or CLI flags on `main.py`).
 
 ---
 
-# Author
+## Roadmap / Ideas
 
-**George**
+- [ ] Support additional local models beyond Llama 3.2
+- [ ] Publish HTML report artifacts from CI runs
+- [ ] Slack/GitHub PR comment integration for regression summaries
 
-Built as an LLM evaluation and MLOps/LLMOps engineering project.
+---
+
+## License
+
+Add a license (MIT is a common default for portfolio projects) — currently unlicensed.
